@@ -10,24 +10,22 @@
 #include <stdlib.h>
 
 int main(void) {
-  // printf("Entered main\n");
+  printf("Entered main\n");
   char *line1 = NULL;
   size_t len1 = 0;
   ssize_t nread;
 
-  // printf("Calling getline\n");
-  printf("Please enter some text: ");
+  printf("Calling getline\n");
   nread = getline(&line1, &len1, stdin);
-  // printf("Returned from getline\n");
+  printf("Returned from getline\n");
   if (nread == -1) {
     perror("getline failed\n");
     exit(EXIT_FAILURE);
   }
-  // printf("print line and length\n");
-  // printf("Read line of length %zd:\n", nread);
-  // printf("Print line time, calling fwrite\n");
-
-  // fwrite(line1, nread, 1, stdout);
+  printf("print line and length\n");
+  printf("Read line of length %zd:\n", nread);
+  printf("Print line time, calling fwrite\n");
+  fwrite(line1, nread, 1, stdout);
 
   char *saveptr;
   char *ret = strtok_r(line1, " ", &saveptr);
@@ -37,8 +35,7 @@ int main(void) {
     perror("first call on srtok_r failed\n");
     exit(EXIT_FAILURE);
   }
-  printf("Tokens: \n");
-  printf("\t%s\n", ret);
+  printf("%s\n", ret);
   char *ret2 = NULL;
 
   while (1) {
@@ -49,10 +46,10 @@ int main(void) {
       perror("srtok_r failed\n");
       exit(EXIT_FAILURE);
     }
-    printf("\t%s\n", ret2);
+    printf("%s\n", ret2);
   }
 
   free(line1);
-  // printf("Hello World.\n");
+  printf("Hello World.\n");
   return 0;
 }

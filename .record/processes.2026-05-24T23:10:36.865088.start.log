@@ -1,0 +1,16 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  1.3  0.0  18380  9756 pts/0    Ss   23:08   0:01 zsh --login
+cmpt201       86  0.7  0.0  18384  9596 pts/1    Ss   23:08   0:00 zsh --login
+cmpt201      171  0.4  0.0  14828  8560 pts/2    Ss+  23:08   0:00 zsh --login
+cmpt201      481  0.4  0.0   2904  2052 pts/0    S+   23:09   0:00 /home/cmpt201/.local/bin/record
+cmpt201      482  0.1  0.1 105684 20392 pts/0    Sl+  23:09   0:00 /home/cmpt201/.local/bin/record
+cmpt201      486  0.4  0.1 108604 23364 pts/0    Sl+  23:09   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.0.2026-05-24T23:09:45.402853
+cmpt201      488  0.0  0.0  34840 15832 pts/0    S+   23:09   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.0.2026-05-24T23:09:45.402853
+cmpt201      489  0.0  0.1  34852 16524 pts/0    S+   23:09   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.0.2026-05-24T23:09:45.402853
+cmpt201      490  0.0  0.0   2808  1844 pts/3    Ss   23:09   0:00 sh -c /usr/bin/zsh
+cmpt201      491  1.6  0.0  18440  9788 pts/3    S    23:09   0:00 /usr/bin/zsh
+cmpt201      699  0.5  0.0  22820 14412 pts/3    S+   23:10   0:00 lynx https://opencoursehub.cs.sfu.ca/cmpt201/grav/labs/lab1-getline
+cmpt201      700  0.0  0.0      0     0 pts/3    Z+   23:10   0:00 [lynx] <defunct>
+cmpt201      755 72.2  0.0   2904  2152 pts/1    S+   23:10   0:00 /home/cmpt201/.local/bin/record
+cmpt201      756 80.0  0.1  31936 20064 pts/1    S+   23:10   0:00 /home/cmpt201/.local/bin/record
+cmpt201      758  0.0  0.0  13488  4640 pts/1    R+   23:10   0:00 ps aux

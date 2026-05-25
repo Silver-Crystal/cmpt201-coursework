@@ -1,0 +1,12 @@
+
+
+# send in ** lineptr to getLine, then *lineptr would be pointing at the line, can use that for
+# tokenizing *n will also point to the size of the line
+char* lineptr = NULL
+size_t n=0;
+line = GetLine(&lineptr, &n, stdin ?)
+
+# pass  full string, space as delimiter, address of the pointer saving its progress(new var?)
+#tokenizerCall1
+
+# on 2n call, pass in NULL, delimiter, address of pointer saving its progress
