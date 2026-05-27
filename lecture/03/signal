@@ -1,0 +1,86 @@
+
+
+Signals are notifications with specific meaning.
+
+when one process is saying no to some other process, or doing something else, it has to do this
+through the kernel
+
+File Download example.
+
+Parent: signal handle is registered
+Child: Sends a signal to parent
+
+
+How does the browser know the file is downloaded?
+
+
+let's tell the process what to do-> handler
+the parent process tells the os. it gives os a handler so os can handle it.
+so if the child process sends some notification to the parent process, then run this function.
+(tells this to the os ^
+
+
+handler() {
+print "File downloaded!"
+}
+
+main() {
+pid = fork();
+if (pid !=0 ) {
+register signal handler ->
+wait forever
+}
+}
+
+
+
+...
+main() {
+if (pid != 0) {
+...
+}
+else {
+if (file_downloaed()) {
+signal parent -> kill(...)
+}
+}
+}
+
+sigaction(...)
+kill(...)
+
+after the child is done, it sends parent a signal, and the os takes that signal and calss a
+function.
+
+Function pointer.
+pointer holding the address of a function
+allows us to
+
+# include <stdio.h>
+void happy(int score) {
+  printf("%d is great!\n", score);
+
+}
+
+void sad(int score) {
+  printf('%d sucks!\n", score);
+}
+
+int main() {
+  // Declare funciton pointer variable
+  void (*my_function)(int);
+
+  // Change value, just like a variable, no ()
+  for (int i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+      my_func = happy;
+      }
+      else {
+        my_func = sad;
+      }
+
+      my_function(i);
+
+      }
+      return 0;
+      }

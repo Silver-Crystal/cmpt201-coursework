@@ -1,0 +1,8 @@
+
+
+
+the return values are stored in memory,
+the memory belongs to kernel
+even if the program is running in userspace,
+as the os, the kernel deals with the final value
+memory is allocated in the kernel space
