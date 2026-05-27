@@ -1,0 +1,19 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.1  0.0  18772 10464 pts/0    Ss+  09:53   0:04 zsh --login
+cmpt201      181  0.0  0.0  10232  2968 pts/0    T    09:59   0:00 man 3 waitpid
+cmpt201      192  0.0  0.0   8680  2428 pts/0    T    09:59   0:00 less
+cmpt201      196  0.0  0.0  15112  3176 pts/0    T    10:22   0:00 zsh --login
+cmpt201      884  0.7  0.0  18508  9828 pts/1    Ss   10:44   0:03 zsh --login
+cmpt201     1579  0.0  0.0   2904  2128 pts/1    S+   10:45   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1580  0.0  0.1 105684 20404 pts/1    Sl+  10:45   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1584  0.2  0.1 108604 23664 pts/1    Sl+  10:45   0:01 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.1.2026-05-26T10:45:27.680721
+cmpt201     1586  0.0  0.0  34840 16016 pts/1    S+   10:45   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.1.2026-05-26T10:45:27.680721
+cmpt201     1587  0.0  0.1  35140 16872 pts/1    S+   10:45   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.1.2026-05-26T10:45:27.680721
+cmpt201     1588  0.0  0.0   2808  1760 pts/2    Ss   10:45   0:00 sh -c /usr/bin/zsh
+cmpt201     1589  0.2  0.0  18420  9740 pts/2    S    10:45   0:01 /usr/bin/zsh
+cmpt201     1831  0.0  0.0  17216  8620 pts/2    S+   10:45   0:00 /usr/bin/nvim zombie_process.c
+cmpt201     1834  1.2  0.1  27192 20596 ?        Ss   10:45   0:05 /usr/bin/nvim --embed zombie_process.c
+cmpt201     1984  9.7  0.0  18376  9680 pts/3    Ss   10:52   0:01 zsh --login
+cmpt201     2128 75.5  0.0   2904  2080 pts/3    S+   10:52   0:00 /home/cmpt201/.local/bin/record
+cmpt201     2129 88.8  0.1  31936 20428 pts/3    S+   10:52   0:00 /home/cmpt201/.local/bin/record
+cmpt201     2131  0.0  0.0  13488  4712 pts/3    R+   10:52   0:00 ps aux

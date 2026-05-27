@@ -1,0 +1,19 @@
+#include <stdio.h
+#include <unistd.h>
+
+int main() {
+
+  printf("Start ");
+
+
+
+  pid_t current = getpid();
+  print("PID=%d, ", current);
+  fork();
+  pid_t now = getpid();
+  pid_t parent = getppid();
+  if (current == now ) {
+    printf("parent PID=%d\n", current);
+    printf("PARENT: ");
+  else if ( parent == current) {
+    printf("parent pid=%d
