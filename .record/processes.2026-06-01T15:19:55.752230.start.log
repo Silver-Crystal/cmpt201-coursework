@@ -1,0 +1,5 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1 11.2  0.0  18376  9556 pts/0    Ss   15:19   0:01 zsh --login
+cmpt201      163 55.2  0.0   2904  2152 pts/0    S+   15:19   0:00 /home/cmpt201/.local/bin/record
+cmpt201      164 71.4  0.1  31936 20384 pts/0    S+   15:19   0:00 /home/cmpt201/.local/bin/record
+cmpt201      166 33.3  0.0  13488  4556 pts/0    R+   15:19   0:00 ps aux

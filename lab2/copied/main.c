@@ -11,20 +11,24 @@ int main(void) {
     printf("Enter program to run: ");
     ssize_t len = getline(&line, &n, stdin);
     if (len == -1) {
-      free(line);
+      // free(line);
       printf("\nNo program entered, exiting now :p\n");
       break;
     }
-    printf("%s\n", line);
+    // printf("%s\n", line);
 
     line[len - 1] = '\0';
 
-    printf("%s\n", line);
+    // printf("%s\n", line);
 
     pid_t pid = fork();
     if (pid == 0) // child
     {
-      if (execl(line, line, NULL) == -1) {
+      // if (execl(line, line, NULL) == -1) {
+      // execlp seems to bettter in execution...?(tho i might not be sending one of the
+      // arguments...) (p seems better cause it executes with just ls and does not need us to enter
+      // /bin/ls ...?)
+      if (execlp(line, line, NULL) == -1) {
         perror("execution of child process failed\n");
         free(line);
         exit(-1);
@@ -40,5 +44,6 @@ int main(void) {
       }
     }
   }
+  free(line);
   return 0;
 }
