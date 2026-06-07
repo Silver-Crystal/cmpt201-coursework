@@ -1,0 +1,179 @@
+
+
+CPU Scheduling
+
+for each core, might have more threads.
+in  276 we will talk about signle core with single thread.
+
+if we want to run multiple processes,
+
+what do we need to run a process.
+
+what are teh states
+
+registers, program counters, stack pointers, maybe some flags we need to store.
+those come under the umbrella of the current state/context.
+
+
+context switch-> saving pc, registers, stack pointers, and maybe some other stuff,  and load in the
+information from another process.
+
+i.e save current state of the current process and load the status of the new process.
+
+when compared with when we just run the process, this has more overhead, saving and loding.
+
+therefore we should not do context switching frequently
+
+(so eg. we have 1 programming assignment and one essay assignment for two ifferent courses, then we
+are trying to do both while switching frequently.
+
+When the program is ready to run it is in the reqdy queue, then it is scheduled.
+if it needs to read or write something, it goes into the i/o queue(as it does not need to be in the
+cpu for that).
+
+after we are done reading input or file, then it will go back to the queue.
+
+a program does not always need the cpu.
+
+only one process will be running the others would be waiting.
+
+
+there are several types of scheduling algorithms.
+
+Non-preemptive scheduling:
+a process oes not give up the core until it terminates.
+
+Preemptive scheduling - the kernel stops a process at any time.
+
+Preemptable Kernel
+
+-(almost)
+(before this, when a kernel is executing a sys call(system), the program/kernel could not be
+stopped)
+
+preemptive scheduling may not be that important for personal computers, but in the case of flights
+or autonomous vehicles, there's a requirement for certain processes.
+certain proccesses need to bwe finisehd in a certain period fo time to avoid ...... result
+
+when scheduling, we need to maximize somethings:
+  keep cpu as busy as possible.   -> CPU utilization
+  # of processes that complete their execution time per unit -> THroughput
+
+is one more importan then the other(depends).
+
+We want to minimize->
+  the amount of time to execute a particular process,
+    eg. compress file
+  Waiting time->
+
+
+intituitiv
+
+4 students, want to print, first student has 1000 pages to  print, second third, fourth have 1, 2, 3
+pages
+so FCFS is bad here.
+if a logn process arrives early, it can sabotage all others.
+
+how can we minimize the wait time.
+
+if we think about the printer scenario, four students, first print the 1 page, then we print 2 page,
+then print 3 page.
+then 1000 pages
+
+SJF
+Shortest job first.
+
+Shortest Remaining Time First (SRTF).
+
+wait time = end time - execution time -arrival time
+
+best algorithm if you want to minimize wait time.
+
+
+p1 will never finish if we keep getting ignored. it will get starved, it will never finish.
+
+
+
+Round robin->
+  We don't care how much time you need to finish, we just run each process and keep switching at a
+  fixed period of time.
+
+
+each x units of time (quantum) the scheduler will: move currently running process to the boack of
+the ready queue.
+
+
+priority scheduling.
+
+some processes we dont want them to be responsive, and others we do.
+mouse needs to be more responsive, while downloading a file doesn't need to be that responsive.
+
+real time tasks with deadlines.
+
+want those to have higher priority.
+
+two different requirements or deadlines, hard real time deadline.
+(like red light, we need the autonomous vehichle to preciesely get a result within a short period of
+time, within 0.1 or less.
+
+or Soft-real time systems.
+
+gaming
+want to render frames, its fine if we miss it once or twice
+
+real time tasks usually have  ahigher priority
+
+
+Task priority,
+
+
+multilevel queue scheduling.
+
+System process queue-> 0
+
+foreground process queue -> 1
+
+background process queue -> 2
+
+then can do weighted round robin.
+so something like 0 1 2  0 1 0
+      and repeat this over and over.
+
+that's how e decide whichqueue will pick a process.
+different queues can have different algorithms to organize how to organise/order processes within
+the same priorities
+
+
+multilevel
+so program a starts in queue 0, if it doesn't finish after some tiem, move it to queue 1, then if it
+still doesn't finish there, move it to queue 2(bg).
+
+
+
+in linux kernel is open source, go and read it
+
+CFS tries to make sure that each process uses a similar amount of CPU time.
+
+
+Interactive vs batch
+Interactive
+  user driver, regular desktop
+Batch0>
+  no interaction needed, compiling program
+
+I/o BOun vs CPU bound
+I/O bound:
+  More i/o than computation, format change, such as csv to xml.
+
+
+
+
+
+sum the topic up.
+
+talk about different scheduling algorithms.
+
+sheduler selects the next process to execute.
+
+Multilevel queue , multilevel feedback queue, difference is if a program does not complete in higher
+level queues.
