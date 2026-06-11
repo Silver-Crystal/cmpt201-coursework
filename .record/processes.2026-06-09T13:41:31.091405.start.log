@@ -1,0 +1,8 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  18480  9936 pts/0    Ss   10:14   0:01 zsh --login
+cmpt201      169  0.0  0.0  18388  9488 pts/2    Ss   10:15   0:01 zsh --login
+cmpt201     1950  0.0  0.0  23112 14632 pts/0    S+   11:07   0:00 lynx https://cmpt201.cs.sfu.ca/cmpt-201/labs/lab4-sbrk
+cmpt201     1951  0.0  0.0      0     0 pts/0    Z+   11:07   0:00 [lynx] <defunct>
+cmpt201     4754 53.8  0.0   2904  2160 pts/2    S+   13:41   0:00 /home/cmpt201/.local/bin/record
+cmpt201     4755 86.9  0.1  31936 20144 pts/2    S+   13:41   0:00 /home/cmpt201/.local/bin/record
+cmpt201     4757  100  0.0  13488  4592 pts/2    R+   13:41   0:00 ps aux

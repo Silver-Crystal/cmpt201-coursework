@@ -1,0 +1,81 @@
+
+
+we will implement a simpler version of malloc and free;
+(helps us understand low level memory managemnt).
+
+all memory in this lecture is not physical memory, bu is virtual memory..
+
+
+OSTEP book
+
+Chapter 13, 14, 16
+
+pages.cs.wisc.edu/~remzi
+
+
+
+Data structures.
+
+a9 uses malloc? tried
+
+program break is used by linux to mark end of heap.
+(actually end of bss; but grows to be heap).
+
+
+we track the free space instead of the used space
+(as we can not do anything about the used space, we need to allocate using the free space)
+when we call free, it is added into the linked list
+
+technically
+
+if we free a block, we use that as the first block.
+
+
+lmfao
+
+we insert at head cause it's o(1)
+lmfao
+no other reason.
+
+kekeke
+
+
+assuming we operate inside the program break line.
+
+we can technically access memory that we already freed.
+
+huh
+how do we detect if we are using freed memory.
+
+
+
+
+for malloc, we take  a free block from the linked list,
+
+remove it from the linked list, split the free block into two blocks: allocated and free, and hte
+free block is inserted at the head again.
+
+
+for free, we just free and then we insert at head
+
+for malloc, we take  a free block from the linked list,
+
+remove it from the linked list, split the free block into two blocks: allocated and free, and hte
+free block is inserted at the head again.
+
+
+for free, we just free and then we insert at head
+
+
+0-255, 256 bytes
+
+head pointing to 0, next = null, size = 256
+
+8 bytes -> size and next
+
+takes 16 bytes to store the header.
+
+
+size is free + header
+
+we can have an implementation where we save

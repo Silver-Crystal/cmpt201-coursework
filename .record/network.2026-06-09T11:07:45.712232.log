@@ -1,0 +1,2 @@
+Netid State Recv-Q Send-Q Local Address:Port   Peer Address:PortProcess
+tcp   ESTAB 48330  0         172.17.0.3:44188 142.58.10.224:443  users:(("lynx",pid=1950,fd=3))

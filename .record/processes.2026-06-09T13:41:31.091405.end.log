@@ -1,0 +1,18 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  18480  9936 pts/0    Ss   10:14   0:01 zsh --login
+cmpt201      169  0.0  0.0  18388  9488 pts/2    Ss   10:15   0:01 zsh --login
+cmpt201     1950  0.0  0.0  23112 14632 pts/0    S+   11:07   0:00 lynx https://cmpt201.cs.sfu.ca/cmpt-201/labs/lab4-sbrk
+cmpt201     1951  0.0  0.0      0     0 pts/0    Z+   11:07   0:00 [lynx] <defunct>
+cmpt201     4754  0.0  0.0   2904  2160 pts/2    S+   13:41   0:00 /home/cmpt201/.local/bin/record
+cmpt201     4755  0.0  0.1 106308 20812 pts/2    S+   13:41   0:00 /home/cmpt201/.local/bin/record
+cmpt201     5051  0.0  0.0  18380  9608 pts/3    Ss   13:45   0:01 zsh --login
+cmpt201     5201  0.0  0.0   2904  2108 pts/3    S+   13:45   0:00 /home/cmpt201/.local/bin/record
+cmpt201     5202  0.0  0.1 105684 20336 pts/3    Sl+  13:45   0:00 /home/cmpt201/.local/bin/record
+cmpt201     5206  0.1  0.1 108604 23516 pts/3    Sl+  13:45   0:02 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.3.2026-06-09T13:45:23.906137
+cmpt201     5208  0.0  0.0  34840 15856 pts/3    S+   13:45   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.3.2026-06-09T13:45:23.906137
+cmpt201     5209  0.0  0.1  34996 16672 pts/3    S+   13:45   0:01 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.3.2026-06-09T13:45:23.906137
+cmpt201     5210  0.0  0.0   2808  1868 pts/4    Ss   13:45   0:00 sh -c /usr/bin/zsh
+cmpt201     5211  0.2  0.0  19648 11224 pts/4    S    13:45   0:04 /usr/bin/zsh
+cmpt201     6999  0.0  0.0  10492  3576 pts/4    S+   14:11   0:00 man snprintf
+cmpt201     7009  0.0  0.0   8836  2976 pts/4    S+   14:11   0:00 less
+cmpt201     7121  0.0  0.0  13488  4544 pts/2    R+   14:14   0:00 ps aux
