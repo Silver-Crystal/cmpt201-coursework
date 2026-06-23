@@ -1,0 +1,18 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.2  0.0  18780 10548 pts/0    Ss   15:35   0:01 zsh --login
+cmpt201      172  0.1  0.0  18468  9576 pts/1    Ss   15:38   0:00 zsh --login
+cmpt201      886  0.0  0.0   2904  2064 pts/0    S+   15:43   0:00 /home/cmpt201/.local/bin/record
+cmpt201      887  0.0  0.1 109312 23492 pts/0    Sl+  15:43   0:00 /home/cmpt201/.local/bin/record
+cmpt201      892  0.1  0.1 108604 24720 pts/0    Sl+  15:43   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.0.2026-06-22T15:43:34.245462
+cmpt201      894  0.0  0.0  34840 15888 pts/0    S+   15:43   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.0.2026-06-22T15:43:34.245462
+cmpt201      895  0.0  0.1  34992 18656 pts/0    S+   15:43   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.0.2026-06-22T15:43:34.245462
+cmpt201      896  0.0  0.0   2808  1852 pts/2    Ss   15:43   0:00 sh -c /usr/bin/zsh
+cmpt201      897  0.2  0.0  18444 10000 pts/2    S    15:43   0:00 /usr/bin/zsh
+cmpt201     1301  0.1  0.0  23696 15096 pts/1    S+   15:47   0:00 lynx cmpt201.cs.sfu.ca
+cmpt201     1308  0.0  0.0      0     0 pts/1    Z+   15:47   0:00 [lynx] <defunct>
+cmpt201     1446  0.0  0.0  17216  8848 pts/2    S+   15:48   0:00 /usr/bin/nvim lab5.c
+cmpt201     1449  3.2  0.1  27600 20972 ?        Ss   15:48   0:05 /usr/bin/nvim --embed lab5.c
+cmpt201     1547  6.6  0.0  18376  9680 pts/3    Ss   15:50   0:00 zsh --login
+cmpt201     1697 51.2  0.0   2904  2164 pts/3    S+   15:50   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1698 88.8  0.1 109296 23704 pts/3    S+   15:50   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1701  0.0  0.0  13488  4656 pts/3    R+   15:50   0:00 ps aux
