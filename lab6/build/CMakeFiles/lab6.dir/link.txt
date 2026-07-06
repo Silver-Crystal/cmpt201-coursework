@@ -1,0 +1,1 @@
+/usr/bin/clang -g CMakeFiles/lab6.dir/lab6.c.o -o lab6 

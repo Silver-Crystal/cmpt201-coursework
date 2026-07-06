@@ -1,0 +1,16 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  19460 11592 pts/0    Ss+  Jun24   0:12 zsh --login
+cmpt201       84  0.0  0.0  19416 11684 pts/1    Ss   Jun24   0:04 zsh --login
+cmpt201      266  0.0  0.0  20512 12212 pts/2    Ss   Jun24   0:08 zsh --login
+cmpt201    17611  0.0  0.0   8680  2688 pts/1    T    Jun24   0:00 less
+cmpt201    50032  0.0  0.0   8680  2744 pts/2    T    00:45   0:00 less ../02-tools/a5-Silver-Crystal/logging/logging.c
+cmpt201    50344  0.0  0.0  22024 13560 pts/2    T    00:50   0:00 lynx https://github.com/rxi/log.c
+cmpt201    50345  0.0  0.0      0     0 pts/2    Z    00:50   0:00 [lynx] <defunct>
+cmpt201    70322  0.0  0.0   2904  2108 pts/1    S+   03:29   0:00 /home/cmpt201/.local/bin/record
+cmpt201    70323  0.0  0.1 109788 22820 pts/1    S+   03:29   0:01 /home/cmpt201/.local/bin/record
+cmpt201   111361  0.0  0.0 236848  5792 pts/2    T    18:55   0:00 git diff
+cmpt201   111362  0.0  0.0   8680  2636 pts/2    T    18:55   0:00 /usr/bin/less
+cmpt201   113049  0.0  0.0   8680  2640 pts/2    T    19:13   0:00 less src/buildStruct.c
+cmpt201   114009  0.0  0.0  10484  3472 pts/2    S+   19:29   0:00 man strstr
+cmpt201   114019  0.0  0.0   8680  2748 pts/2    S+   19:29   0:00 less
+cmpt201   118824  0.0  0.0  13488  4620 pts/1    R+   21:31   0:00 ps aux
