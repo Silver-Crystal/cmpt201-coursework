@@ -1,0 +1,17 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  19592 10360 pts/0    Ss+  Jul09   0:06 zsh --login
+cmpt201      249  0.0  0.0  18552  9420 pts/2    Ss+  Jul09   0:03 zsh --login
+cmpt201    47280  0.0  0.0  15072  7884 pts/4    Ss+  Jul11   0:00 zsh --login
+cmpt201    64147  0.0  0.0  18380  9692 pts/5    Ss   07:23   0:00 zsh --login
+cmpt201    64308  0.0  0.0   2904  2136 pts/5    S+   07:23   0:00 /home/cmpt201/.local/bin/record
+cmpt201    64309  0.0  0.1 122104 27704 pts/5    S+   07:23   0:00 /home/cmpt201/.local/bin/record
+cmpt201    64565  0.0  0.0   7276  2776 ?        Ssl  07:23   0:00 /home/cmpt201/.local/share/nvim/cord/bin/cord -p /tmp/cord-ipc -c 1219918880005165137 -t 300000 -r 0 -i
+cmpt201    65982  0.3  0.0  18380  9696 pts/1    Ss   08:04   0:00 zsh --login
+cmpt201    66138  0.1  0.0   2904  2120 pts/1    S+   08:04   0:00 /home/cmpt201/.local/bin/record
+cmpt201    66139  0.1  0.1 109312 23532 pts/1    Sl+  08:04   0:00 /home/cmpt201/.local/bin/record
+cmpt201    66144  0.1  0.1 108604 22992 pts/1    Sl+  08:04   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.1.2026-07-13T08:04:19.148898
+cmpt201    66146  0.0  0.0  34840 15964 pts/1    S+   08:04   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.1.2026-07-13T08:04:19.148898
+cmpt201    66147  0.0  0.1  34852 16588 pts/1    S+   08:04   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.1.2026-07-13T08:04:19.148898
+cmpt201    66148  0.0  0.0   2808  1908 pts/3    Ss   08:04   0:00 sh -c /usr/bin/zsh
+cmpt201    66149  0.6  0.0  19612 11140 pts/3    S+   08:04   0:00 /usr/bin/zsh
+cmpt201    66728  0.0  0.0  13488  4612 pts/5    R+   08:06   0:00 ps aux

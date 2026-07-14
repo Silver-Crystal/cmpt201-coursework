@@ -1,0 +1,1 @@
+/usr/bin/clang -g -pthread -fsanitize=thread -g CMakeFiles/main_normal.dir/src/lab8.c.o -o main_normal 

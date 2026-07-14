@@ -1,0 +1,7 @@
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/main.dir
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/main_normal.dir
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/dumb.dir
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/asan.dir
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/msan.dir
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/edit_cache.dir
+/home/cmpt201/cmpt201-coursework/lab8/build/CMakeFiles/rebuild_cache.dir

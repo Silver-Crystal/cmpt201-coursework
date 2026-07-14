@@ -1,0 +1,206 @@
+conference, all the papers were written by large languagr
+
+how many different file types.
+
+(not binary file, text file, c file)
+how organised ?
+hard/soft links.
+
+University of I/O
+
+Gives access to many things via files.
+actual files-> text and stuff
+
+devices: keyboards, hard-drives, LEDs
+
+
+-Networks
+-Process information
+
+all of these are the files.
+
+/proc File System
+(we can use the same way to write to all of these)
+
+/proc/cpuinfo
+/proc/meminfo
+/proc/PID/status
+/proc/PID/fd
+/proc/PID/task/TID
+
+
+can open and read, but can not write...?
+
+kernel dynamically populates information in form of files
+
+3 standard file descriptors that are always open.
+
+opend by the init process
+
+/dev/null -> provedes a black hole of all data
+
+/dev/zero-> proiveds infinite null
+/dev/random and /dev/urandom are pseudo random number generators:w
+:q
+
+
+1.44 MB floppy disk
+
+on windows, partition a and b were used for floppy disks
+windows is good at backwards compatibility.
+to be compatibile with programs that were written in floppy disk ages.
+
+partition
+in linux the file system is case sensetive.
+
+windows is case insensetive
+
+if you run cross platform software like git, then might lead to issues.
+software vulnerabilities
+
+14,0000 bug bounty
+(what is the safety vulnerability).
+
+file system manages files and directories
+
+each partition can have different file system.
+
+BeagleY-AI
+one is FAT32, accessible and readable to windows, storing configuration data
+ext4-> used by linux to store file system.
+
+From user's perspective
+file system is a file tree
+
+everything is under root directory/
+
+Each partition contains a different partition.
+
+you can have two or more partitions mounted under root..?
+
+a file is associated with an i-node
+
+an i-node contiains metadata about the file.
+
+identified by number
+
+ls -li
+
+stat, fstat, lstat
+
+man 2 stat, man 3 stat
+
+
+stat() to display if path is file/dir
+
+command line arg to get filename, arg[1]
+
+man inoed, especially st_mode
+
+S_ISREG(..), S_ISDIR(...)
+
+
+regular file
+directory
+other
+
+not allowed to hard link directories.
+
+softlinks or symlink
+
+symlink is an actual file
+soft link is an actual file, hard link is not, its like a pointer.
+
+symlink-> can link directories.
+does not need to be within the same filesystem
+
+
+so hard link is basically, shared inode
+symlink is not shared inode, it points to the *name* not the inode
+
+hardlink points/copies according to the id.
+
+setuid, setguid
+
+program you run will run with your permission.
+
+if we want to change password or something
+
+
+the owner is uroot (/usr/bin/passwd)
+will be executed with
+
+
+ping is also setuid, passwd, su, sudo
+
+setuid-> user can act as ownder
+
+setguid-> group
+
+sticky bit
+
+can be set on a shared directory
+
+delete/rename
+
+we create a shared directory,
+share_photos/
+
+set stick bit on shared_photos/
+chmod +t shared_photos
+
+one user can not delte another user's file
+
+VFS
+
+Virtual file system.
+
+interface different file systems can implement.
+
+open, read, write, close
+
+not a file system of real files, software pretending to be a file system.
+
+we use macos, install appplicatiions, dmg file, software pretending to be some file.
+
+if a file system implenets this interface, canbe used a sa linux file system.
+/dev, /prc, /sys
+
+linux presetns all file systesms as a single tree
+
+starts at root directpory /
+
+not a single file tree
+  is actually multiple file treees combined together
+
+mount a tree under root subt re...
+
+partiation contains file tree
+
+
+mounting-> combining multiple file trees into one
+
+put that tree as subtree of another file system.
+
+all file systems(from different partitions/disks) are mounted and  form a single file tree
+
+rclone(?) to mount microsoft one drive disk locally.
+
+mount command mounts a file system to a specific directory.
+
+mount command shows current setup
+
+
+summary
+everything is a file
+/prc for processes info
+/dev for devices
+/sys for system info
+
+I-Nodes -> used for meta data about each file directory
+
+
+mounting -> combine two file trees into one.
+
+
+403

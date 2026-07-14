@@ -1,0 +1,19 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  19592 10360 pts/0    Ss+  Jul09   0:06 zsh --login
+cmpt201      249  0.0  0.0  18552  9420 pts/2    Ss+  Jul09   0:03 zsh --login
+cmpt201    47280  0.0  0.0  15072  7884 pts/4    Ss+  Jul11   0:00 zsh --login
+cmpt201    64147  0.0  0.0  18380  9692 pts/5    Ss   07:23   0:00 zsh --login
+cmpt201    64308  0.0  0.0   2904  2136 pts/5    S+   07:23   0:00 /home/cmpt201/.local/bin/record
+cmpt201    64309  0.0  0.1 109312 23956 pts/5    Sl+  07:23   0:00 /home/cmpt201/.local/bin/record
+cmpt201    64314  0.1  0.1 108604 23600 pts/5    Sl+  07:23   0:04 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.5.2026-07-13T07:23:39.068021
+cmpt201    64316  0.0  0.0  34840 15964 pts/5    S+   07:23   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.5.2026-07-13T07:23:39.068021
+cmpt201    64317  0.1  0.1  35372 17108 pts/5    S+   07:23   0:02 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.5.2026-07-13T07:23:39.068021
+cmpt201    64318  0.0  0.0   2808  1792 pts/6    Ss   07:23   0:00 sh -c /usr/bin/zsh
+cmpt201    64319  0.0  0.0  18500  9776 pts/6    S    07:23   0:00 /usr/bin/zsh
+cmpt201    64531  0.0  0.0  17216  8776 pts/6    S+   07:23   0:01 /usr/bin/nvim lab7.c
+cmpt201    64534  2.6  0.1  64496 25252 ?        Ssl  07:23   1:03 /usr/bin/nvim --embed lab7.c
+cmpt201    64565  0.0  0.0   9352  2792 ?        Ssl  07:23   0:00 /home/cmpt201/.local/share/nvim/cord/bin/cord -p /tmp/cord-ipc -c 1219918880005165137 -t 300000 -r 0 -i
+cmpt201    65982  4.1  0.0  18380  9696 pts/1    Ss   08:04   0:00 zsh --login
+cmpt201    66138 57.6  0.0   2904  2120 pts/1    S+   08:04   0:00 /home/cmpt201/.local/bin/record
+cmpt201    66139 81.8  0.1 109296 23528 pts/1    S+   08:04   0:00 /home/cmpt201/.local/bin/record
+cmpt201    66142  0.0  0.0  13488  4552 pts/1    R+   08:04   0:00 ps aux

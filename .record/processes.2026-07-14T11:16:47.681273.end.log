@@ -1,0 +1,9 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  14828  8268 pts/0    Ss+  10:37   0:00 zsh --login
+cmpt201     2537  0.0  0.0   7276  2776 ?        Ssl  10:56   0:00 /home/cmpt201/.local/share/nvim/cord/bin/cord -p /tmp/cord-ipc -c 1219918880005165137 -t 300000 -r 0 -i
+cmpt201     2764  0.0  0.0  18364  9500 pts/1    Ss+  10:57   0:00 zsh --login
+cmpt201     6044  0.0  0.0  18368  9444 pts/5    Ss+  11:15   0:00 zsh --login
+cmpt201     6462  0.0  0.0  15100  8764 pts/2    Ss   11:16   0:00 zsh --login
+cmpt201     6611  0.0  0.0   2904  2048 pts/2    S+   11:16   0:00 /home/cmpt201/.local/bin/record
+cmpt201     6612  0.0  0.1 109632 23888 pts/2    S+   11:16   0:01 /home/cmpt201/.local/bin/record
+cmpt201    18969  0.0  0.0  13488  4512 pts/2    R+   12:59   0:00 ps aux
