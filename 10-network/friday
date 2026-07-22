@@ -1,0 +1,319 @@
+
+
+when you receive a ......
+
+the Phy(physical) layer is responsible for converiting signals to 0 1, and 0 1 to voltage/signalling
+
+
+Link(MAC) layer
+  Local network addressing and routing.
+(small area) local network.
+
+(wired or wireless local network)
+LAN = Local Area Network
+
+MAC = Medium access Control.
+
+(no matter wired or wireless.)
+(broadcast all messages).
+
+everyone can receive messages, regardless if it's for them or not.
+
+by default when sending messaging at local level
+
+Mac
+05:35:5a:40:f9:05
+
+(wired or wireless)
+all the messages are broadcasted.
+all devices receive.
+they check, does the mac address, match with mine, if no, discard.
+0-55
+(8 bytes?)
+32 bits.
+2 ^32 different ip address available.
+
+ip v4 are used across the world
+
+if 2 devices have same ipv4
+aant
+
+NAT-> network address translation.
+
+idea is if you have 5 devices connected to the router.
+from outside, there is only 1 device,
+
+
+all computers in sfu will share smae ip address (observed from outside).
+after router reserves all the messages, the router figures out which devices each message is for.
+
+merges many devices into 1.
+
+
+ipv6
+128 bits
+
+for each field is 4 bits
+
+2 ^128
+
+if we assign ipv6 addresses to each grain of sand on earth
+each grain can have 45 quintillion IPs.
+
+ipv4, source ip, dest ip.
+router knows where the packet should be sent to.
+
+
+ip-> there's no encryption, no authnetication, no security mechanism in ip
+can send out ip packets
+with any arbitrary source ip address.
+can input any fake source of ip address.
+can put in any fake ip address as source and send out requests.
+
+denial of service attack.
+
+if your ip address is ip 1.
+when server has ip 1
+the requests are forwarded to the computer.
+
+
+(there is also ip stack...? maybe secure...?-> not widely accepted yet).
+
+
+transport layer->
+can do packet tracking/retransmission.
+
+imagine sending / receiving lots of packages
+packages can be lost.
+car crash/ human errors, losing a package in a warehouse.
+packages/packets can arrive out of order.
+
+need to be combined in correct order.
+
+packages may/can be duplicated.
+sender thinks receiver did not receive the message, so may receive the same message twice.
+
+(some need reliable in-order byte stream).
+need a way to control:
+  TCP(Transmission control protocl)
+  No loss, no out of order, or duplication.
+  UDP(User datagrap protocol
+    -> similar to tcp, does not guarantee
+
+tcp is like making a phone call, you call alice, bob picks that up.
+udp is like, sneds sms message to bob.
+raw datagrams = packets
+
+
+if you think about it, each device have different have differen tip address.
+each network has different ip address....
+but on each device there might be several applications/services which might need.
+so in transport layer, port number is used (port number is put in header of udp or tcp)(source port
+number and destination port number)
+(device checks which application is listening at specified port number and send it to that
+application).
+(port 80 or 443);
+
+Port Number:
+
+
+
+Application Layer:
+(what the application is doing)
+(may have other protocols, for this layer. HTTP, ftp,
+
+
+transport layer, tcp and udp share similar issues with ip
+their port number, synchronous number, not encrypted/authenticated in the header.
+the payload can be encrypted. -> thttpo
+different layers have header and payload.
+
+when we send from application to transport. adding a header in transport and everything before it is
+payload.
+
+
+oif we have two desktops connected to the same network, wired connection to the rotuer.
+message comes for computer a, for desktop a.
+
+router will send message to the wire, both a and b can receive the message.
+when bob presses, header of the link layer.
+
+
+
+socket interface
+
+socket->concept of
+some sort of connection / structure representing some connection.
+
+we will talk about itnerface on linux.
+
+an application can use a socket to communicate iwth another process
+local, remote
+
+five key syscalls
+socket()
+bind()
+
+
+socket, takes three arguments, returns fd(file descriptor)
+socket(int domain, int type, int protocol)
+
+funcitons to send receive
+
+we can use same interface to read / write data from /to socket
+
+socket -specific: send() recv() sendto() recvfrom
+
+dommain->what protocol is used
+(why does that matter)(when you receive some message, it's just some byte streams)
+
+domain-> AF_UNIX -> local communication
+program running  locally(alice program talking to bob program, does not go out of the desktop)
+AF_INET
+(for ipv4 internet protocols)
+AF_INET6
+(for ipv6 internet protocols)
+
+
+int type
+SOCK_STREAM -> TCP
+  sequenced, relaible, two way, connection based
+  connection based/oriented: reliable
+
+-Sock_DGRAM: UDP
+  datagrams
+  connectionless: unreliable
+
+
+sometimes reliability motters more
+
+tcp-> udp + other guarantees
+udp->
+
+
+protocol
+  0 for ......
+
+TCP(Stream socket sequence)
+
+  for server, create a socket, bind that socket, listen to the socket, if client connects, accept
+  that.
+  if no client is connecting to the server, accept is blocked
+
+
+on the client side
+  it has socket() and then connect() (connect to some server).
+
+
+after connect, the server accepts the connection.
+then they can read() write() data to each other.
+after transmission is done, close() the connection.
+
+sockets create a socket
+bind() uses a generic address struct.
+
+struct sockaddr {
+  sa_family_t sa_family;
+  char sa_data[14];
+  // size varies
+  // bind() given struct size.
+}
+
+different protocols use different structs
+bind-> binds the socket to an address , if local to a socket file, if its not local, then to a port
+number.
+
+
+listen() marks the socket as passive.
+(wait for a connection)
+(by default, socket is active, need to use listen() to make it passive.
+
+accept()-> accepts a new connection.
+returns a newsocket to use for the enw connection.
+original socket is used only to accept new connections/
+
+connect() only for tcp
+udp is connection less, no need to call connect();
+
+socket() bind() listen() accept() read() write() close() ->  likely for server
+
+for udp,
+server->
+  use socket() and bind()
+  and recvfrom()
+
+client _>
+  socket
+  sendto()
+  bind()
+  recvFrom()
+
+server ->
+sendto() or send() (same family function.
+
+
+why do we need bind here for
+
+
+client tells the system
+(i want to bind to port or socket file)
+if the client does not bind, then it cannnot receive.
+tcp-> 2 way, both sides can read wirte.
+for udp, connection less, you just send out.
+if the client is not ready, when the server sends some data to the client, it will be discarded,
+the bind() is telling the system, i will register for some port or socket file to wait for s1
+sending data to me.
+
+"connectionless" means
+
+we do not establish a connection first.
+
+It is like an sms message that is received one off
+(in tcp, you need to have a 3 way handshake or something and so on)
+for connection less, just send it out.
+
+UDP has no active or passive sockets
+sendto
+tell me ip address and port number will just send as is
+
+socket() bind() recvfrom() sendto() close() -> example udp server.
+
+connect()
+
+for server its bind, listen, accept -> passive
+client is connect
+
+when the client runs 'bind'-> its the server now
+when the server use sendto-> the client is the receeiver.
+
+
+
+both sides server and client could be client and server.
+
+cbind() close() recvfrom() sendto() socket()
+(ucp server makes sense)(
+
+accept()bind()close() lisnten() read()socket() write
+accept-> specifically for tcp and serverr.
+
+
+TCP Activity
+
+create two TCP programs:
+server and client.
+implement using AF_UNIX
+
+if we chekc manpage , we will see if we use AF_UNIx, teh linux os will guarantee the reliability and
+order.
+if we run this locally with udp, it also guarantees reliability.
+
+client should be able to send messages typed on the terminal to the server
+the server should be able to print out the messages
+
+man unix for info on AF_UNIX
+
+af -Unix address uses
+struct sockaddr_un
+
+sa_famly
+client ->

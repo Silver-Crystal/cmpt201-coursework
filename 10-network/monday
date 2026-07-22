@@ -1,0 +1,243 @@
+udp, datapgra socket sequence, connectionless, no connection, no need for connect or listen.
+
+for server, create socket, bind to the socket receive.
+
+
+last lecture we wrote tcp server and client to communicate with each other locally using AF_UNIX
+aftere creating a server
+
+add for loop for server client, client can send many messages, not just 1
+
+
+inet_pton()
+presentation to network
+
+inet_ntop()
+network to presentation
+
+(these handle both ipv4 and ipv6)
+
+
+length of ip address are fixed, 4 and 16 bytes
+
+loopback address: 127.0.0.1
+sin_addr.s_addr = INADDR_LOOPBACK;
+
+(does not send any packages to the network)(loop within our os)
+wildcard address(might have serveral network interfaces, if we use a desktop, we may have a wireless
+or network connection)
+(we may have three network connection/addresses
+
+sin_addr.s_addr = INADDR_ANY-> accept connection from any addresses.
+
+localhost-> refer to local machine instead of machines.
+(does not work if we use local host)
+
+if we bind() to socket with wildcard, address listens to any address.
+
+
+bind() needs ip address and port
+
+port number identifies  a specific socket on the machine
+
+ port number
+SSH: 22
+HTTP: 80
+HTTPS: 443
+
+
+clients to know to look at these ports
+Ephemeral port.
+
+client does not care which port number we use.
+
+for client, we can open up any port number to connect.
+
+the number does not matter that much as long as it is useful.
+the client does not need to listen to that port number and accept connections.
+
+Ephemeral port
+-> will use some port that is available
+
+byte order
+&
+host
+
+byte order
+Little endian-> mostly used
+big endian
+
+
+when the network was created, the primary user or device ... ibm....
+huge mainframe computer, for these computers, almost / very large portion of them were Big Endian
+
+to be compatible with all these systems.
+
+little endian -> later
+
+little endian to big endian..?
+translation
+for little endian devices, we convert the order to big endian and then send it out.
+then receive, convert to local endianness
+
+for port number and ip addresses, uses big endian.
+Network byte order is
+(man byteorder)
+
+
+htonl
+host to network long
+htons
+host to network short
+ntohl
+network to host long
+ntohs
+network to host short
+
+
+only for multi byte values
+dont need to convert for char.
+
+can use host name instead of an ip address
+
+getaddrinfo()
+
+converts host name (string) to set of all possible options
+(structs containing an ip and a port number)
+
+getnameinfo()
+convert ip to hostname
+
+
+create two programs server and client
+
+-> implement socket sequence tcp stream, using af_inet
+sned messages from the client and print them out from the server
+
+use port 8000 on server
+
+AF_INET uses sockaddr_in
+
+
+for prot addres and ip address, remember that both use network
+convert to network first
+
+
+we can also use recv (receive ) and send instead of read and write
+
+receive and send data over the network
+
+more control, MSG_DONTWAIT, MSG_PEEK, read but don't remove
+
+the message is still there, but not removed.
+
+MSG_PEEK-> particularly useful if there is some length i n the header of the message.
+
+first get the length from the header, how many bytes.
+
+
+send, similarly to write, but MSG_DONTWAIT
+
+AF_INET for IPv4
+
+
+unsigned char __pad[x]->
+
+handled by the system, we don't need to handle it.
+
+
+currently the server can only handle one client.
+the server should be able to handle man large number of clients.
+
+
+we open the first socket
+
+if we think about it
+
+can we create a new process to handle the connection
+use fork
+
+later we learned how to create a thread.
+can we create a thread to handle accepting connections from the client, create a thread to handle
+that client.
+
+idea 1: for each client create a new thread to handle that.
+
+higher overhead of creating new processes or threads
+(new process is more cotly then thread)
+several syscall, going through the system
+
+Non-blocking accept() _> non blocking sockets
+
+a) accept a new connection immediately or
+b) return immediately if no incoming connection.
+
+create array (maybe 10(if there is data, can read it using non blocking read or write)(keep checking
+each of the 10 sockets in the array)
+(
+server will infinitely loopo through calling non blocking accept to add any new socket to array
+non blocking read or write or both on each socket
+
+
+pros-> no need to create
+cons-> busy while loop, looping on nothing.
+
+idea 3:
+
+  let the kernel notify the program on socket event
+
+  use non blocking sockets and kernel notifies program on socket evetns
+
+  i/o multiplexing
+  select, poll epoll
+
+  what events we want to monitor
+
+  read and write,
+  blcoking function
+  select() or epoll()
+
+  check which file descriptor can perform i/o
+
+  perform i/o
+
+  pros:
+    no thtread overhead
+  cons:
+    more complex
+
+
+
+3 ccalls to implement i/o multiplexing with epoll()
+
+epoll_create()
+  returns an epoll instance
+epoll_ctl()
+epoll_wait()
+
+non-blocking io-> keeps checking every socket file descriptor, use non blocking read or write,
+busy-wait-> looping, but not doing anything productive, not making any progress.
+Wastes CPU time
+
+
+epoll ->
+  more complex code
+      -> can handle several sockets
+      -> not creating new processes or threads, so not too many system resources
+      -> its not using CPU time, its like wait, block.
+
+thread per client->
+  Use too much resources
+    more threads, more processes, every syscall goes throught the kernel, uses too many system
+    resources
+
+
+if you are a google server, you are serving millions or billions of users at the same time, kind of
+impossible to create that many processes or threads at the same time.
+
+accept() returns a new socket for each TCP client
+
+Server must likely handle many sockets  at once:
+  new thread per socket
+  use non-blocking io to busy wait
+  epoll() or select() to have kernel monitor sockets
