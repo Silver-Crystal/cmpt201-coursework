@@ -1,0 +1,227 @@
+plain text -> encruption cipher text -> decryption -> plain text.
+
+
+Cryptographers invented secret codes to hide messages from unauthorized observers.
+
+challenges -> how can we hide a message from everyone but the intended recipient?
+how can the recipient know the message is authentic
+
+how to make sure its the original one.
+
+caesar cypher -> possibly the first cypher in history.
+
+
+Shift each letter a certain number of letters down the alphabet.
+
+problem with a secret algorithm
+
+(entropy or the case size is very small, not difficult to try all 26 options)
+
+another problem.
+when te algorithm is compromised, when the attacker knows the way you changed the letters, then it
+is easy to break.
+
+if the attacker knows this, there is no easy way to fix this
+
+if your code(the mapping or algorithm) is compromised or is known by the attacker, then it is
+broken, you have to use a different path, you cannot reuse the same for encyptiong any more.
+
+security by obfuscity.(obfusciation)
+(not recommended).
+
+for modern cryptography, the algorithms are public, everyone knows how the algorithms work. but the
+secret are the keys, you have an encryption.
+(if something is broken, it's very likely that the key is leaked).
+(algorithm is very hard to compromise).
+everyone can look into this algorithm to see if you can find it, then we can fix it.(the reasoning
+behind public algorithm).
+
+may be symmetric (secret key) or asymmetric(public key).
+if algorithm is secret, how it works , if it is unknown to the attacker, the attacker can eventually
+figure it out. (it's not super challenging to get a copy of the algorithm)
+if the key is the only private thing, the cipher text is the only known thing.
+we can keep the algorithm, but use a new key.
+
+
+given a key, should be relatively easy to encrypt or decrypt a message.
+without a key, should be hard to compute(invert) or decrypt a message.
+
+ultimate goal -> if you do not have a key, the best way to decrypt a message is to brute force.
+
+let's assume the key size is 1 byte, no matter, you can just try 2 ^8 256, and \can guess in about
+256 tries.
+
+window of validity.
+minimum time to compromise a cryptographic algorithm.
+
+must only use algorithm that have not been compromised.
+
+problem: window of validity : may be shorter then the lifetime of your system.
+
+(the algorithm is broken but the system might still be using it).
+(should be able to replace the crypto function easily.
+(time to brute force a key, depends on the entropy of a ke)
+(validity, -> found a better way of compromising the algorithm)
+(don't know window of vulnerability until it is actually compromised)
+(algorithm to calculate hash)
+
+SHA-0-> 1993
+
+1995 -> Possible weakness was found
+
+
+Cryptographic has functions.
+message (m ) of arbitrary length as input and produces a smaller (short) number
+h(m)
+Toy example:
+h(m) = (m^2) % 4321
+
+not secure at all if designed liike this ofc ^
+
+properties of hash funciton:
+Easy to compute(if you algorithm and m)
+
+Preimage resistance (one way function)
+if we have
+
+(serveral different inputs can output the same output).
+reverse of h() should be dificult to compute.
+(first one -> there might be serveral inputs that produce the same output)
+second preimage resitance.
+if you have x, you can calculate h(x), it is difficult to find h(x') that cna generate the same
+output.
+
+very difficult to find another value that produces the same hash.
+
+collision resistance.
+should be difficult to find two messages x and x' where h(x) == h(x')
+i.e given a hash function, difficult to find two values that produce the same hash.
+
+(integrity)
+all related to how hash function is used
+(we will use the hash functions to verify the signature of a file).
+for example if we upgrade our iso or android.
+if it is 1 gb, it takes a lot of time to verify it all.
+we calculate
+
+(do not recomment us to write or implement any cryptographic algorithm).
+(can you extrapolate on that).
+
+
+plain text ---encryption with shared private key----> cipher text --- decryption with shared private
+key ----- > plain text
+in modern crypto, there are usually two different algorithms, one algorithm for encryption, one for
+decryption.
+
+need to have a secure way to sahre the secret keys.
+
+you want to send a secret message to your friend, you use secret key to encrypt that.
+
+send it to your friend through canada post.
+
+now with public key, we have better way of encryption.
+before 1970's, it was the only way to do the encryption.
+
+AES -> private key crypto algorithm.
+need to use the same key to encrypt and decrypt.
+
+
+we divide it into blocks, 128 bits for each block(AES 128 )
+divide your file into block 128 or 256 and for each block, it goes through this process, which
+contains 10 rounds.
+if the message is shorter then 1 block, you add something (padding) to have one whole block.
+
+public key crypto (Asymmetric)
+
+Plain text -- encryption with public key --> cipher text --Private key --- > plain text
+
+encrypt using public key and to decrypt using private key.
+(solves the dilemma of how to share the secret key).
+if we use public key
+
+don't need to have a secure channel to destribute secret keys.
+(like the scenario of symmetric encryption)
+
+public key: can be known to anybody
+  use to encrypt and verify signatures
+  to send emails.
+
+
+generate keys, use 'decryption' using private key.
+first decrypt the file using my private key,
+then snend it ot the receiver, and encrypt it again, and then it will have a plain text, combine
+with the hash function ,
+
+oublic key for encryption, private for decryption.
+encryption decryption algorithms are different.
+
+fundamental property of public key encryption:
+when encrypted with the public key, only the private key can decrypt it.
+not some arbitrary 2 keys, generated in pairs.
+could either (some randomly generate a private key and based on that generate a public key).
+how are the keys generateed.
+
+generated together as part of a solution(to some very hard to reverse computattion).
+RSA(one of the most well known- first - public key encryption algorithms.)
+hard problems, factoring 2 very large numbers.
+it is not very hard to multiply two prime numbers, but it is hard to factor them
+(factoring large numbers, super large, more then 3000 smth.
+curve public key addition
+
+(so maybe something like this
+
+we will do some operations on the elliptic curves, we define an addition option, we generate
+
+elliptic curve, key size is smaller, ed25519.
+(how did we choose R again in the curve)
+
+alice wants to send a secret message to bob.
+alice encrypts the plain text message usinb bob's public key.
+
+
+(so bob 'decrypts' with his private key)
+
+alice decrypts option using her private key against the message, then encrypt that using bob's
+public key, then send that to bob, bob receives it, bob decrypts the message using his private key
+then encrypt the message using her public key.
+both need to know each other's public keys, and their own public key.
+
+
+at elliptic curves, all of the algorithms are completely different.
+(if you use RSA to create a signature, the signing process is similar to the decryption.)
+
+we can send some message to let the recipient make sure that this message is for me .
+sharing public key(receiver to believe that this is the real message, need some
+signature)(broadcast)
+we have a plain text signature, reciever can verify the signature against the plain text.
+there are some benefits for public key encryption.
+we don't need a secure way to distriubte key.
+
+when we destribute public key, how can we verify teh
+
+publish your public key there.
+if you want to send an email, you can get a publick key from there.
+(keys are connected to the email)
+
+
+
+hash function does not need encryption.
+
+even if u use things like
+same input-> same output.
+
+uses hex values( xxd)
+
+we could do symmetric encryption
+
+takes the password to derive a 256 bit long key, and use that as ...
+
+
+```openssl enc -d -aes-256-cbc -in file_name_to_encrypt -out encrypted_file_name ```
+
+public key encryption.
+
+openssl genpkey -algorithm RSA -out private_fake.pem
+
+generate publick key for private key
+openssl -pkey -in private_fake.pem -pubout -out public.pem
