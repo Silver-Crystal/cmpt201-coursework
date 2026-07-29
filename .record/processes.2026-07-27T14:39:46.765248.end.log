@@ -1,0 +1,19 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  14828  8312 pts/0    Ss+  14:39   0:00 zsh --login
+cmpt201       85  0.0  0.0  19680 10752 pts/1    Ss+  14:39   0:04 zsh --login
+cmpt201      167  0.0  0.0  18768 10032 pts/2    Ss   14:39   0:01 zsh --login
+cmpt201      512  0.0  0.0   2904  2084 pts/2    S+   14:39   0:00 /home/cmpt201/.local/bin/record
+cmpt201      513  0.0  0.2 120196 38212 pts/2    S+   14:39   0:01 /home/cmpt201/.local/bin/record
+cmpt201     1184  0.0  0.0   9352  2796 ?        Ssl  14:40   0:00 /home/cmpt201/.local/share/nvim/cord/bin/cord -p /tmp/cord-ipc -c 1219918880005165137 -t 300000 -r 0 -i
+cmpt201     1692  0.0  0.0  18384  9440 pts/4    Ss   15:21   0:00 zsh --login
+cmpt201     1990  0.0  0.0   2904  2160 pts/4    S+   15:22   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1991  0.0  0.1 109312 23832 pts/4    Sl+  15:22   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1996  0.0  0.1 108604 24708 pts/4    Sl+  15:22   0:01 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.4.2026-07-27T15:22:04.153398
+cmpt201     1998  0.0  0.0  34840 15692 pts/4    S+   15:22   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.4.2026-07-27T15:22:04.153398
+cmpt201     1999  0.0  0.1  35132 18644 pts/4    S+   15:22   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.4.2026-07-27T15:22:04.153398
+cmpt201     2000  0.0  0.0   2808  1936 pts/5    Ss   15:22   0:00 sh -c /usr/bin/zsh
+cmpt201     2001  0.2  0.0  19796 11260 pts/5    S+   15:22   0:10 /usr/bin/zsh
+cmpt201     2707  0.0  0.0  17212  8440 pts/5    T    15:24   0:00 /usr/bin/nvim
+cmpt201     2720  0.0  0.1  58516 18808 ?        Ssl  15:24   0:00 /usr/bin/nvim --embed
+cmpt201     2754  0.0  0.0  15256  4764 pts/5    T    15:24   0:00 /usr/bin/zsh
+cmpt201    11661  0.0  0.0  13488  4576 pts/2    R+   16:23   0:00 ps aux

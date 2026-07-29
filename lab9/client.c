@@ -7,6 +7,10 @@
 // you tell in the code ?
 // the client reads from the user input to get this data
 // 4. How does the client program end ? How can you tell that in the code ?
+// the line looping while the input is greater then 1
+// i.e, if we press enter, the only input sent will be \n\0, and read will not count \0 and \n will
+// be counted as '1' character, therefore the program will end gracefully(another method is ofc just
+// pressing ctrl + d ig )
 #include <arpa/inet.h>
 #include <stdio.h>
 #include <stdlib.h>

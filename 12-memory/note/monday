@@ -1,0 +1,186 @@
+memory mapping, not just for inter process communication.
+
+Uses for memory mapping:
+loading a file int meory
+  vs using read()/write()
+
+allocating memory.
+accessing memory-mapped devices using /dev/mem
+  (embedded systems, shared between processors)
+
+button, how do we know it is pressed, map the button to a memory address(maybe check 0 or 1)
+
+mmap()
+void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset)
+
+addr-> starting address of the new mapping, usually NULL(so os can pick the address).
+
+you can give it a value, so os will use that has a hint, to find closest address.
+(we cal also force os to use that specific address but that will nullify the existing memory mapping
+if any.
+
+length: # bytes in mapping
+
+prot: memory protection.
+    executable, readable, writable, or not accessible.
+
+        if we write code or put instructions into that type of the memory, can the cpu execute it.
+        if it is not executable
+
+        execution xor writable
+
+        either its executable or its writable
+
+        if the attacker can somehow write data to that part of the memory, the attacker can somehow
+        run it.
+        if we have executable only, maybe this part of the program is written by us or the user,
+        even if it's executable, the malicious actor can not change it.
+
+flags:  MAP_SHARED, MAP_PRIVATE, optionally-> MAP_ANONYMOUS
+      anonymous -> similar to the anonymous pipe.
+            anonymous or named memor mapping.
+
+fd: the open file to be mapped.
+
+offset: the offset into the file to be mapped.
+    (where to start writing into the file, 0, 10 or wtv)
+
+
+returns a pointer to the beginning of the new mapping.
+
+for anonymous pipe, we do not need a path for it, we do not need a file connected to the pipe
+
+flag argument
+if we map the file into a memory, then this is not anonymous
+the flag map_anonymous flag is not set.
+-File Mapping
+  loaded into memory
+  file i/o becomes memory access
+    -> replace read() write() calls with pointer access to read or write file
+  memory mappped file
+
+-Anonymous
+  Another way to allocate memory to our process(in addition to sbrk())
+  malloc() uses both
+
+
+memory mapping can be shared or private
+
+
+Memory mapping can be shared or private
+
+Shared mapping:
+multiple processes can share a mapping(
+  like in pipes, can fork a process, and the process can have the same mapping)(the data is also
+  shared, if you change one, this part of the data is also changed in the parent process.
+
+multiple processes can map the same file.
+
+
+shared mapping
+
+  that part of the memory is mapped to the same page.
+  if you change the contents of one process
+  it changes in the other one.
+
+private
+  copy on write
+  when we fork, the memory mapping points to the same page, but if the child process starts writing
+  to the memory mapping, the data in the memory is copied over and then the memory mappping points
+  to a different page/frame
+
+  the address it points to in the vram is still the same, but it is different in the physical
+  memory.
+
+4 Possibilties:
+  Private file mapping:
+    file is mapped to a memroy/process as  a private mapping
+      Changes not written to file or shared with other processes.
+
+    so when we fork, the memory mapping can be accessed, when we write to it,
+      it will be like anonymous, won't write to the file.
+  Shared file mapping:
+    changes propogate to the real file eventually.
+
+    other processes mapping same file.
+
+  Private anonymous mapping:
+    more memory is allocated ot the calling process
+      fork() copies memory but each process has private
+
+  Shared anonymous
+    memory is shared, changes propogate to other process
+    mmap() arguments: offset = 0
+                      fd = -1 or shm_open()
+                      flag |= MAP_ANONYMOUS
+
+page 8, 'more memory is allocated to the calling process'
+
+unmap
+int unmap(void *addr, size_t length);
+
+  unmaps the mapped memory
+
+least priviliged -> if not required, we don't use it.
+
+allow fast access to a temporary copy of a file-> private file mapping
+
+two processes access the same memory so they can both access a shared data structure -> shared
+  anonymous mapping
+
+any number of processes, edt, see edits and modify the contnets on the disk-> shared file mapping
+
+
+flags: shared, private
+
+activity:
+memory mapped file i/o
+
+modify example,
+receive only one command line argument
+file name
+file memory mapping
+read what is inside and redirect to stdout
+
+
+Two different ways to share memory between processes
+For related:
+  create memory map then sahre with fork()
+
+  mmap() with MAP_SHARED|MAP_ANONYMOUS
+
+For unrelated processes:
+  use a sahred memory object( shm_open()) and then mmap()
+
+  man 7 shm_overview
+    shm_open(): open a shared memory object
+    ftruncate(): Set size
+    mmap(): Create memory mapping
+
+int shm_open(const char *name, int oflag, mode_t mode)
+
+-Similar to opening a file, but it's shared memory
+  . Like creating a file; listed in /dev/shm/ (there is format name)
+  E.g ls /dev/shm/somename
+  Returns: file descriptor for a shared memory object
+  name known by all participating processes.
+
+
+by default when we create it, size is 0, so we use ftruncate to set the size
+
+then we use mmap to map that.
+
+pass shared memory object file descriptor as fd
+
+munmpa to unmap that
+shm_unlink to remove the sahred memory object.
+
+Removes file from /dev/shm/
+however processes using it will keep using it.
+
+write two programs that communicates with each other via shared memoyr.
+they should each receive a shared memory object file name as the only command line argument.
+omne write integer, other reads integer
+
+hint
+writer: shm_open, ftruncate, mmap, getchar

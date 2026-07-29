@@ -1,0 +1,225 @@
+
+inter-process communication
+signalsignalss
+
+local networking
+
+allows two programs two talk to each other.
+
+shared storage,
+files
+one process can write to a file, another can read from a file
+
+
+some are suited for communication between parent-child
+
+and there are some for communication between two arbitrary processes.
+communication-> usually words, messages, bytes streams, serialized data,
+
+what if u describe a structure in your code, and you want to send that, how do you do that.
+
+
+Unix domain socket
+
+IPC(inter-process communication)
+
+eg. unix domain socket is an example of this
+
+pipes ->
+pipes are special types of fifo and vice versa
+
+message queues-> share structures
+
+memory mapping, shared.
+
+Pipe usage.
+ps aux | grep bash
+
+| is a pipe
+
+(the output of the first becomes the input to the second)
+can also use it in our program.
+
+man 7 pipe
+int pipe(int filedes[2])
+
+creates two descriptors, one for read, one for write.
+
+Pipe details.
+
+a pipe has the following
+  uses a buffer in kernel. pipe copies some data into a buffer in the kernel
+  read system call, ......
+  it is unidirectional.
+
+(will show unidirectional, but can still somehow read write at the same time->
+  NOT RECOMMENDED AT ALL)
+
+pipe, in most cases is combined with fork system call, we create a  pipe
+
+filedes[0]-> read end
+filedes[1] -> write end
+(eg, unidirectional pipe between parent and child)
+
+(if the
+once determine whos the sender, whos the receiver, can't swithc that
+is a byte stream.
+
+buffer io.
+
+typical use case
+
+pipe is created, 2 end, read and write, call a fork, fork copies
+
+both have access to a variable
+
+parent process can decide, i want to send data to the child process, so i close the read
+the child reciever, so it reads and closes the write descriptor.
+
+
+Pipe in kernel
+
+User space
+Parent process
+pipe FDs [R|W]
+
+pipe, read end <--- write end.
+
+after fork we have the smae thing, the file descriptor is cloned, so they refer to the same thing in
+the kernel.
+
+once we determine the parent process will only recieve data, and wont write, so close wirte, and
+similarly close read for child.
+
+Important:
+  Each process typically uses a different end.
+
+you can somehow use both, but it will not work as we expect, it's better to use 1.
+
+what if both want to send and  recieve , we create two pipes.
+
+if we close the write descriptor,
+
+if you don't close, the read may be blocked.
+
+
+ASK
+so if we don't close one end of the pipe, :wq
+
+WHY WOULD IT BE BLOCKED
+pipe is a byte stream, store it in buf(buf wsas char)
+write it to the terminal.
+
+pipes buffer size has fixed
+
+limits.h says 512, but other places say that it should be 4096
+
+closing all wirte FD"s will make read() return 0 after returning all data from buffer.
+
+addo
+
+
+what if we send null terminator instead of closing write end.
+
+
+int dup2(int oldfd, int newfd)
+can redirect another program's input/output to pipes
+
+dup2() system call.
+
+if we combine with how we use pipes in terminal, it could be using dup2 syscalls.
+adjusts the file descriptor newfd, so that it now refrs to the same open file descriptor as oldfd
+
+redirect standard output to the write end of the pipe.
+
+dup2(filedes[1], stdout_fileno);
+any writes to the standard output are instead written to hte filedes[1]-> write end of the file
+
+any writes to stdout are instead sent to write end of hte pipe.
+
+dup2(filedes[0], stdin_fileno);
+any reads from stdin are instead read from the read end of the file
+
+
+FILE* popen(const char *command, const char *mode)
+three things to conveniently run a command.
+  Forks a new process and execs the command in the shell.
+
+encapsulation.
+instead of calling fork and exec, just call popen, it willl fork, execute command.
+
+mode
+mode == r
+  returns a file streamin which is connected to the STDOUT of the command
+if mode == "w"
+  file stream which is connected to the stdin of the command
+
+pclose() to close.
+
+u encapsulate frequently used functionalities into different functions and then just reuse those
+functions.
+
+Activity: Pipe to child and back
+
+modify the example in man pipe as follows:
+the parent should send a string to the child
+the child should send the string back to the parent in upper-case
+
+parent should print out the received string.
+
+
+FIFO
+
+can share a pipe.
+
+for afunix, give it a path name,
+
+fifo is a named pipe.
+
+unrelated
+
+mkfifo();
+fifo is still unidirectional and typically for two processess:.
+
+fifo is usedd for two arbitrary processes, write two programs
+
+no relationship
+
+
+
+
+Message queue->
+similar to a FIFO, but
+  typically used to send structured data(struct or union)
+
+  mq_open(), send, receive, close, unlink
+
+
+mq_send(mqd_t mqdes, const char *msg_ptr, size_t msg_len, unsigned int msg_prio);
+
+sends structured data using a pointer (msg_ptr ) to the structured data.
+
+fifo or pipe have same priority, msg queue has different, higher priority is sent first.
+
+the messages are ordered based on their priorities.
+
+either send the all message or nothing at all, atomic.
+
+mq_receive() retrieves the oldest. highest priority mesage
+
+gets the whole message at once.
+
+
+pipe and fifo are basically the same thing.
+
+pipe is for parent and child processes.
+
+FIFO-> for two distinct arbitrary processes, no shared variables or anything, they share something,
+the fifo path.
+fifo is very similar to read write a file.
+
+FIFO and pipe are for byte streams, not structured, serialed data.
+
+message queue-> to send structured data.
+
+next week we will cover shared memory.

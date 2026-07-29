@@ -1,0 +1,20 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  14828  8312 pts/0    Ss+  14:39   0:00 zsh --login
+cmpt201       85  0.0  0.0  18592  9680 pts/1    Ss   14:39   0:01 zsh --login
+cmpt201      167  0.0  0.0  18768 10032 pts/2    Ss   14:39   0:01 zsh --login
+cmpt201      512  0.0  0.0   2904  2084 pts/2    S+   14:39   0:00 /home/cmpt201/.local/bin/record
+cmpt201      513  0.0  0.1 109312 23516 pts/2    Sl+  14:39   0:00 /home/cmpt201/.local/bin/record
+cmpt201      518  0.2  0.1 108604 23228 pts/2    Sl+  14:39   0:05 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.2.2026-07-27T14:39:46.765248
+cmpt201      520  0.0  0.0  34840 15960 pts/2    S+   14:39   0:00 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.2.2026-07-27T14:39:46.765248
+cmpt201      521  0.1  0.1  35276 16904 pts/2    S+   14:39   0:03 /usr/bin/python3 /usr/bin/asciinema rec --idle-time-limit=60 --stdin --quiet /tmp/.record/input.2.2026-07-27T14:39:46.765248
+cmpt201      522  0.0  0.0   2808  1824 pts/3    Ss   14:39   0:00 sh -c /usr/bin/zsh
+cmpt201      523  0.0  0.0  18520  9600 pts/3    S    14:39   0:01 /usr/bin/zsh
+cmpt201     1160  0.0  0.0  17216  8152 pts/3    S+   14:40   0:01 /usr/bin/nvim monday
+cmpt201     1163  1.1  0.1  60804 21356 ?        Ssl  14:40   0:29 /usr/bin/nvim --embed monday
+cmpt201     1184  0.0  0.0   9352  2792 ?        Ssl  14:40   0:00 /home/cmpt201/.local/share/nvim/cord/bin/cord -p /tmp/cord-ipc -c 1219918880005165137 -t 300000 -r 0 -i
+cmpt201     1623  0.0  0.0  10436  3488 pts/1    S+   15:10   0:00 man mmap
+cmpt201     1633  0.0  0.0   8964  3192 pts/1    S+   15:10   0:00 less
+cmpt201     1692  5.5  0.0  18384  9440 pts/4    Ss   15:21   0:00 zsh --login
+cmpt201     1990 52.2  0.0   2904  2160 pts/4    S+   15:22   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1991 95.0  0.1 109296 23440 pts/4    S+   15:22   0:00 /home/cmpt201/.local/bin/record
+cmpt201     1994  0.0  0.0  13488  4500 pts/4    R+   15:22   0:00 ps aux

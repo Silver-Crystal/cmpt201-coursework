@@ -1,0 +1,8 @@
+trigger:open
+undo_seq:0
+source_path:/home/cmpt201/cmpt201-coursework/10-network/tcp_inet_inclass_server.c
+cursor:1,1
+lines:79
+changedtick:1
+reg_size:1
+source_relpath:10-network/tcp_inet_inclass_server.c

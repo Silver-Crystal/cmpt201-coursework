@@ -1,0 +1,11 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cmpt201        1  0.0  0.0  14828  8520 pts/0    Ss+  Jul28   0:00 zsh --login
+cmpt201       84  0.0  0.0  18360  9588 pts/1    Ss   Jul28   0:00 zsh --login
+cmpt201     4835  0.0  0.0  15096  8808 pts/2    Ss   Jul28   0:00 zsh --login
+cmpt201     4920  0.0  0.0  15200  8900 pts/3    Ss   Jul28   0:00 zsh --login
+cmpt201     5071  0.0  0.0  23840 14992 pts/1    S+   Jul28   0:00 lynx https://opencoursehub.cs.sfu.ca/cmpt201/grav/labs/lab10-multiple-clients
+cmpt201     5147  0.0  0.0   2904  2128 pts/2    S+   Jul28   0:00 /home/cmpt201/.local/bin/record
+cmpt201     5148  0.0  0.1 122376 28436 pts/2    S+   Jul28   0:00 /home/cmpt201/.local/bin/record
+cmpt201     6976  0.0  0.0  10480  3464 pts/3    S+   Jul28   0:00 man pthread_mutex_unlock
+cmpt201     6986  0.0  0.0   8680  2804 pts/3    S+   Jul28   0:00 less
+cmpt201     7056  0.0  0.0  13488  4564 pts/2    R+   10:58   0:00 ps aux
