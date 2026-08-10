@@ -1,0 +1,71 @@
+content before midterm. before 07-threads
+
+final exam will cover content after the midterm.
+
+Mutex:
+critical section,
+synchronise the execution among different processes, threads.
+What is thread safe
+reentrant
+Deadlock
+  4 conditions
+
+
+Condition variable
+  one thread signals another for an event.
+
+Produce consumer
+
+9 files
+
+6 syscalls for file access.
+buffered and non buffered ios
+
+Partitions, I-Nodes(stores metada about file)
+hard soft links,
+mounting one file tree into another.
+
+
+10-networking
+
+Different layers
+5 layers,
+phy, link, ip, transport, application
+Socket
+  can use 2 different
+    tcp
+      connection oriented(in order delivery)
+    udp
+      conneciton less
+
+  can use local socket
+    AF_UNIX
+    AF_LOCAL
+  or internet
+    AF_INET
+
+  endianess.
+  big endian.
+
+server:
+  can handle many sockets at the same time.
+
+
+11-Inter process communication.
+  Pipes,
+  FIFO
+    Named pipe
+  message queue
+  memory sharing
+  (and signal)
+
+  mmap
+  shm_open
+
+12-cryptography.
+  encryption, decryptions
+  hash functions
+  symmetric encryption
+  asymmetric encryption.
+
+  use cases.

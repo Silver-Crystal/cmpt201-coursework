@@ -1,0 +1,159 @@
+rainbow table
+
+if some of the hash values we get appears in the giant table.
+
+attacker pre-computes the hash of common passwords.
+
+(username is usually plain text)
+
+steal some data from the server
+username is abc, hash is 123
+we don't know what the password, know the hash is 123, can calculate the giant table, with all
+possible passwords, we calculate the hash values for each of the tables, can build a map for the
+passwords and hash values, then we check if there is 123 in the hash table, then we can go back to
+check if the password is password.
+
+since it's difficult to go from hash value to password, we precompute some hash values for
+passwords, if they match, then we can get the passwords.
+
+username is plain text, password is hashed
+
+salt:
+(salt -> random number of random string).
+(table, we store user-password || salt) (|| means concatenation).
+associate salt with user.
+store salt and hash(
+verify:
+  hash(user-input || salt) == stored-hash
+(in this case, the attacker can compute without the salt, but need to get the user-input password
+and salt
+need to compute that really big table for each user.
+huge computation task
+[overhead?]
+)
+
+linux stores password in /etc/shadow
+
+pwdis_123:$y$j9T$......
+Salt, HASH,
+
+
+
+sha256sum
+
+if we can modify the file and the digest at the same time, the attacker could change the file first,
+calculate hash value, then modify it later.
+it just says, this file is consistent with this hash value
+
+digital signature
+goal: Verify a message (or document) is an unaltered copy of the one produced by the signer.
+
+the message can be public.
+if s1 modified the file, and if that happens, we can detect that.
+
+
+The Signer:
+  one with private key, who wants to prove they sent the message
+The Verifier
+  has public key
+
+Signer:
+  write document m.
+  compute a message digest h(m) (e.g. using SHA-256)
+
+  Encodes the digest with own private key: enc(h(m))
+  e.g., using RSA public key crypto.
+  (decryption is same as signing in RSA, but different in elliptic based)
+
+Verifier:
+  Receive the message and the signature:
+  m, enc(h(m))
+  decode the signature with.. the signer's public key
+
+
+verify if the public key really is instagram's public key.
+
+instagram sends you its public key in a digital certificate.
+
+(if attacker is in the same network as our computer)(then attacker can modify the things in middle).
+
+certificate, has public key, is signed by signing authroities(we have some built in public keys, can
+use that to verify the signature).
+if verification is successful, can trust the public key included in the certificate.
+(digital certifcate authority, e.g VeriSign, DigiCert)
+
+Need to have, root of trust, chain of trust.
+
+if we assume the os is not compromised, then we trust the built in signing authorities.
+
+could randomly generate a session key.
+public key encryption is used to exchange rnadom secret key.
+then can use that for symmetric key encryption.
+(public key is slow)(symmetric is faster)
+
+chain of trust-> relies on the root of trust.
+if we trust os is not compromised, then we trust the built incertificate for the signing authorities
+if we trust key built into our OS, then we use this public key to trust all keys signed by this.
+
+if u were hosting your own server(would we need to get a cert from the public ones)
+we can use self signing certificate.
+if s1 else uses your website.
+if people don't trust your cert(self), then warning pops up, public key/ cert of our website could
+not be verified.
+
+
+SSH
+
+
+Hash
+Possible to have hash collision
+
+In a class of 30 people
+
+
+given enough messages, we can find a hash collision between two messages.
+does not achieve collision resistance
+
+difficult to find two messages x and x' that have the same hash.
+if we can find them, then the hash function is  not good enough.
+
+x and x' can generate the same hash value.
+
+we create a benign copy of the contract.
+
+demo
+MD% was
+MD5 is totally broken
+md5sum ....
+
+unless you deliberately want to build a website with vulnerabilltity dont use md5
+
+birthday attack
+hash collision of a benign and malicious document.
+
+(second preimage resistance
+first -> preimage resistance -> can not get the original message or value that generated the hash
+value
+second-> can not find a seocond value that has the same value.
+collision resistance is 3.
+)
+
+passwords-> secure way to store passwords
+add salt to the passsword and then store it.
+digest is a hash of a document.
+
+digital signature.
+sign a hash with a private key.
+
+digital certificates.
+sign document to show who really owns a public private key.
+
+different layers of signing authority.
+
+PKI
+public key infrastructure.
+
+can use digital certificates to verify public key of a website.
+
+hash collisions,
+if we can find collision to exploit collisions.
